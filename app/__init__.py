@@ -1,21 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_migrate import Migrate
-
-from models.User import db
-from routes.UserRoute import user_blueprint
+from flask_sqlalchemy import SQLAlchemy
+from config import Config
 
 app = Flask(__name__)
-app.config.from_object('config')
-
-db.init_app(app)    
+app.config.from_object(Config)
+db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-app.register_blueprint(user_blueprint, url_prefix='/users')
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
+from app.models import Objective
+from app.models import User
+from app.models import Login
+from app.models import Epic
+from app.models import Story
+from app.models import Task

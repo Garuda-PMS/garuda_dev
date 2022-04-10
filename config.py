@@ -1,7 +1,8 @@
 import os
 
-SECRET_KEY = os.urandom(32)# Grabs the folder where the script runs.
-basedir = os.path.abspath(os.path.dirname(__file__))# Enable debug mode.
-DEBUG = True# Connect to the database
-SQLALCHEMY_DATABASE_URI = 'your psycopg2 URI connection'# Turn off the Flask-SQLAlchemy event system and warning
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class Config(object):
+    # TODO Load credentials from environment variables
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/garuda_pms'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
