@@ -1,16 +1,13 @@
-from models.User import User
-from models.Story import Story
 from sqlalchemy import ForeignKey
-from models.Objective import Objective
-from flask_sqlalchemy import SQLAlchemy
+from app.models.Objective import Objective
+from app import db
 
-db = SQLAlchemy()
 class Task(Objective):
     __tablename__ = 'task'
     deadline = db.Column(db.Integer)
-    assignee_id = db.Column(db.Integer, ForeignKey(User.id))
-    reporter_id = db.Column(db.Integer, ForeignKey(User.id))
-    story_id = db.Column(db.Integer, ForeignKey(Story.id))
+    assignee_id = db.Column(db.Integer, ForeignKey('user.id'))
+    reporter_id = db.Column(db.Integer, ForeignKey('user.id'))
+    story_id = db.Column(db.Integer, ForeignKey('story.id'))
 
     @property
     def serialize(self):

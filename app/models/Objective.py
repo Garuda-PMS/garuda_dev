@@ -1,7 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from app import db
+
 class Objective(db.Model):
-    __tablename__ = 'objective'    
+    __abstract__ = True  
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     description = db.Column(db.String(1000))

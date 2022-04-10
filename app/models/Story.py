@@ -1,11 +1,11 @@
-from models.Epic import Epic
+from app.models.Objective import Objective
 from sqlalchemy import ForeignKey
-from flask_sqlalchemy import SQLAlchemy
+from app import db
 
-db = SQLAlchemy()
-class Story(Epic):
+class Story(Objective):
     __tablename__ = 'story'
-    epic_id = db.Column(db.Integer, ForeignKey(Epic.id))
+    epic_id = db.Column(db.Integer, ForeignKey('epic.id'))
+    associated_tasks = db.relationship('Task', backref='story', lazy=True)
     
     @property
     def serialize(self):

@@ -1,6 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from models.Objective import Objective
-db = SQLAlchemy()
+from app.models.Objective import Objective
+
 class Epic(Objective):
     __tablename__ = 'epic'
 
