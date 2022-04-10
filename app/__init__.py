@@ -10,7 +10,7 @@ migrate = Migrate(app, db)
 
 from app.models import Objective
 from app.models import User
-from app.models import Login
+from app.models import LoginCredential
 from app.models import Epic
 from app.models import Story
 from app.models import Task

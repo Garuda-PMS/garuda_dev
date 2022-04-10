@@ -1,5 +1,5 @@
 import sys
-from models.Login import Login
+from app.models.LoginCredential import LoginCredential
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, redirect, url_for, request, abort
 
