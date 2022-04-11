@@ -1,6 +1,8 @@
 from app import db
+from app import login
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'user'    
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30))
@@ -15,3 +17,8 @@ class User(db.Model):
             'first_name': self.first_name,
             'last_name': self.last_name
         }
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))

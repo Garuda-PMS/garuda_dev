@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="./static/css/kanban.css">
     <script type="text/javascript" src="./static/js/kanban.js"></script>
     <title>Kanban Board</title>
 </head>
+
 <body>
+    <h1>Hi, {{ current_user.first_name }} {{ current_user.last_name }}!</h1>
     <div class="container">
         <div class="kanban-heading">
-            <img src="garuda_logo.jpg" alt="Garuda_PMS" width="10%"/>
+            <img src="garuda_logo.jpg" alt="Garuda_PMS" width="10%" />
         </div>
         <br>
         <div class="kanban-board">
@@ -59,7 +62,8 @@
                 </span>
                 <span class="form-row">
                     <label class="form-row-label" for="task-name">Text</label>
-                    <textarea class="form-row-input" name="task-description" id="task-description" cols="70" rows="10"></textarea>
+                    <textarea class="form-row-input" name="task-description" id="task-description" cols="70"
+                        rows="10"></textarea>
                 </span>
                 <span class="form-row">
                     <label class="form-row-label" for="task-name">Status</label>
@@ -74,11 +78,12 @@
                 </span>
                 <span class="form-row-buttons">
                     <button id="edit-button" onclick="editTask()">Edit</span>
-                    <button id="save-button" onclick="saveTask()">Save</span>
+                <button id="save-button" onclick="saveTask()">Save</span>
                     <button id="cancel-button" onclick="createTask()">Cancel</span>
-                </span>
+                        </span>
             </div>
         </div>
     </div>
 </body>
+
 </html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    {% if title %}
+    <title>{{ title }} - Garuda PMS</title>
+    {% else %}
+    <title>Welcome to Garuda PMS</title>
+    {% endif %}
+</head>
+
+<body>
+    <div>
+        Garuda PMS
+        {% if not current_user.is_anonymous %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
