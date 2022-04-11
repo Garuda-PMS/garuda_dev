@@ -38,3 +38,15 @@ app.register_blueprint(register_blueprint, url_prefix='/register')
 @login_required
 def index():
     return render_template('kanban.html')
+
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-store"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "-1"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
