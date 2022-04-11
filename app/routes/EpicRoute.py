@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.EpicController import view, create, edit
+from app.controllers.EpicController import view, create, edit
 
 epic_blueprint = Blueprint('epic_blueprint', __name__)
 

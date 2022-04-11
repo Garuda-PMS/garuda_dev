@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.StoryController import view, create, edit
+from app.controllers.StoryController import view, create, edit
 
 story_blueprint = Blueprint('story_blueprint', __name__)
 

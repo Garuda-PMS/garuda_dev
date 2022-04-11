@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.TaskController import view, create, edit
+from app.controllers.TaskController import view, create, edit
 
 task_blueprint = Blueprint('task_blueprint', __name__)
 
