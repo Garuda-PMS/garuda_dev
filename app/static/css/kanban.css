@@ -1,9 +1,35 @@
 body {
     background-color: rgba(177, 177, 177, 0.658);
   }
-  
+
+  .navbar {
+    list-style-type: none;
+    margin: 3%;
+    padding-left: 0.5em;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar li {
+    float: left;
+  }
+
+  .navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 14px;
+    padding-right: 12rem;
+    padding-left: 5rem;
+    text-decoration: none;
+  }
+
+  .navbar li a:hover {
+    background-color: #111;
+  }
+
   .container {
-    width: 70%;
+    width: 100%;
     min-width: 50%;
     margin: auto;
     display: flex;
@@ -34,7 +60,7 @@ body {
   }
   
   .kanban-block,
-  .create-new-task-block {
+  .create-new-objective-block {
     margin-right: 0.5rem;
     padding: 0.2rem;
     width: 20.5%;
@@ -72,7 +98,7 @@ body {
     /* display: none; */
   }
 
-  .task {
+  .objective {
     background-color: white;
     margin: 0.2rem 0rem 0.3rem 0rem;
     border: 0.1rem solid black;
@@ -80,7 +106,7 @@ body {
     padding: 0.5rem 0.2rem 0.5rem 2rem;
   }
   
-  #task-button {
+  #objective-button {
     margin: 0.2rem 0rem 0.1rem 0rem;
     background-color: white;
     border-radius: 0.2rem;
@@ -91,7 +117,7 @@ body {
     font-size: 1rem;
   }
   
-  .create-new-task-block {
+  .create-new-objective-block {
     display: none;
     /* display: flex; */
     background: #07d2a9;

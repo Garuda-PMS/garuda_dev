@@ -2,41 +2,31 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./static/css/kanban.css">
-    <script type="text/javascript" src="./static/js/kanban.js"></script>
+    <meta http-equiv="Expires" content="-1">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/kanban.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/kanban.js') }}"></script>
     <title>Kanban Board</title>
 </head>
 
 <body>
-    <h1>Hi, {{ current_user.first_name }} {{ current_user.last_name }}!</h1>
+    <ul class="navbar">
+        <li><a onclick="createTask()">Create Objective</a></li>
+        <li><a onclick="editTask()">Edit Objective</a></li>
+        <li><a onclick="deleteTask()">Delete Objective</a></li>
+    </ul>
+    <h3 style="text-align: center;">Hi, {{ current_user.first_name }} {{ current_user.last_name }}!</h3>
     <div class="container">
+
         <div class="kanban-heading">
-            <img src="garuda_logo.jpg" alt="Garuda_PMS" width="10%" />
+
+            <img src="./static/img/garuda_logo.jpg" alt="Garuda_PMS" width="10%"/>
         </div>
         <br>
         <div class="kanban-board">
             <div class="kanban-block" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>Backlog</strong>
-                <div class="task-button-block">
-                    <button id="task-button" onclick="createTask()">Create new task</span>
-                </div>
-                <div class="task" id="task1" draggable="true" ondragstart="drag(event)">
-                    <span>Task 1</span>
-                </div>
-                <div class="task" id="task2" draggable="true" ondragstart="drag(event)">
-                    <span>Task 2</span>
-                </div>
-                <div class="task" id="task3" draggable="true" ondragstart="drag(event)">
-                    <span>Task 3</span>
-                </div>
-                <div class="task" id="task4" draggable="true" ondragstart="drag(event)">
-                    <span>Task 4</span>
-                </div>
-                <div class="task" id="task5" draggable="true" ondragstart="drag(event)">
-                    <span>Task 5</span>
-                </div>
-                <div class="task" id="task6" draggable="true" ondragstart="drag(event)">
-                    <span>Task 6</span>
+                <div class="objective" id="objective1" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                    <span>Dummy Objective</span>
                 </div>
             </div>
             <div class="kanban-block" id="ready" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -54,20 +44,27 @@
             <div class="kanban-block" id="closed" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>Closed</strong>
             </div>
-            <div class="create-new-task-block" id="create-new-task-block">
-                <strong>New Task</strong>
+            <div class="create-new-objective-block" id="create-new-objective-block">
+                <strong>New Objective</strong>
                 <span class="form-row">
-                    <label class="form-row-label" for="task-name">Task</label>
-                    <input class="form-row-input" type="text" name="task-name" id="task-name">
+                    <label class="form-row-label" for="objective-name">Objective</label>
+                    <input class="form-row-input" type="text" name="objective-name" id="objective-name">
                 </span>
                 <span class="form-row">
-                    <label class="form-row-label" for="task-name">Text</label>
-                    <textarea class="form-row-input" name="task-description" id="task-description" cols="70"
-                        rows="10"></textarea>
+                    <label class="form-row-label" for="objective-name">Text</label>
+                    <textarea class="form-row-input" name="objective-description" id="objective-description" cols="70" rows="10"></textarea>
                 </span>
                 <span class="form-row">
-                    <label class="form-row-label" for="task-name">Status</label>
-                    <select class="form-row-input" name="task-status" id="task-status">
+                    <label class="form-row-label" for="objective-name">Type</label>
+                    <select class="form-row-input" name="objective-type" id="objective-type">
+                        <option value="task">Task</option>
+                        <option value="story">Story</option>
+                        <option value="epic">Epic</option>
+                    </select>
+                </span>
+                <span class="form-row">
+                    <label class="form-row-label" for="objective-name">Status</label>
+                    <select class="form-row-input" name="objective-status" id="objective-status">
                         <option value="backlog">Backlog</option>
                         <option value="ready">Ready</option>
                         <option value="inprogress">In Progress</option>

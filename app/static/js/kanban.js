@@ -13,36 +13,30 @@ function drop(ev) {
 }
 
 function createTask(){
-    var x = document.getElementById("inprogress");
-    var y = document.getElementById("done");
-    var z = document.getElementById("create-new-task-block");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        y.style.display = "block";
-        z.style.display = "none";
+    var space1 = document.getElementById("done");
+    var space2 = document.getElementById("testing");
+    var space3 = document.getElementById("closed");
+    var objective_block = document.getElementById("create-new-objective-block");
+    if (space1.style.display === "none") {
+        space1.style.display = "block";
+        space2.style.display = "block";
+        space3.style.display = "block";
+        objective_block.style.display = "none";
     } else {
-        x.style.display = "none";
-        y.style.display = "none";
-        z.style.display = "flex";
+        space1.style.display = "none";
+        space2.style.display = "none";
+        space3.style.display = "none";
+        objective_block.style.display = "flex";
     }
 }
 
 function saveTask(){
-    // var saveButton = document.getElementById("save-button");
-    // var editButton = document.getElementById("edit-button");
-    // if (saveButton.style.display === "none") {
-    //     saveButton.style.display = "block";
-    //     editButton.style.display = "none";
-    // } else{
-    //     saveButton.style.display = "none";
-    //     editButton.style.display = "block";
-    // }
 
-    var todo = document.getElementById("todo");
-    var taskName = document.getElementById("task-name").value;
-    todo.innerHTML += `
-    <div class="task" id="${taskName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)">
-        <span>${taskName}</span>
+    var objectiveName = document.getElementById("objective-name").value;
+    var objectiveStatus = document.getElementById("objective-status");
+    document.getElementById(objectiveStatus.value).innerHTML += `
+    <div class="objective" id="${objectiveName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+        <span>${objectiveName}</span>
     </div>
     `
 }
