@@ -17,12 +17,6 @@ class User(UserMixin, db.Model):
             'first_name': self.first_name,
             'last_name': self.last_name
         }
-    
-    def set_password(self, password):
-        self.login.set_password(password)
-
-    def check_password(self, password):
-        return self.login.check_password(password)
 
 
 @login.user_loader

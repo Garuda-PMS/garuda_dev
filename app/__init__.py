@@ -1,4 +1,3 @@
-import imp
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -25,13 +24,15 @@ from app.routes.EpicRoute import epic_blueprint
 from app.routes.StoryRoute import story_blueprint
 from app.routes.TaskRoute import task_blueprint
 from app.routes.LogoutRoute import logout_blueprint
+from app.routes.RegisterRoute import register_blueprint
 
-app.register_blueprint(user_blueprint, url_prefix='/users')
+app.register_blueprint(user_blueprint, url_prefix='/user')
 app.register_blueprint(login_blueprint, url_prefix='/login')
 app.register_blueprint(logout_blueprint, url_prefix='/logout')
 app.register_blueprint(epic_blueprint, url_prefix='/epic')
 app.register_blueprint(story_blueprint, url_prefix='/story')
 app.register_blueprint(task_blueprint, url_prefix='/task')
+app.register_blueprint(register_blueprint, url_prefix='/register')
 
 @app.route('/')
 @login_required
