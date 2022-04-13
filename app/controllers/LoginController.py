@@ -3,27 +3,33 @@ from flask_login import current_user, login_user, logout_user
 from app.forms.LoginForm import LoginForm
 from app.models.User import User
 
-def prompt_login():
-    return render_template('kanban.html')
+class LoginController():
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(LoginController, cls).__new__(cls)
+        return cls.instance
 
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
+    def prompt_login(self):
+        return render_template('kanban.html')
 
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter(User.login.has(user_name=form.username.data)).first()
-        if user is None or not user.login.check_password(form.password.data):
-            return render_template('login.html', title='Log In', form=form)
-        login_user(user)
-        next_page = request.args.get('next')
-        if not next_page:
-            next_page = url_for('index')
-        return redirect(next_page)
-    
-    return render_template('login.html', title='Log In', form=form)
+    def login(self):
+        if current_user.is_authenticated:
+            return redirect(url_for('index'))
 
-def logout():
-    logout_user()
-    form = LoginForm()
-    render_template('login.html', title='Log In', form=form)
+        form = LoginForm()
+        if form.validate_on_submit():
+            user = User.query.filter(User.login.has(user_name=form.username.data)).first()
+            if user is None or not user.login.check_password(form.password.data):
+                return render_template('login.html', title='Log In', form=form)
+            login_user(user)
+            next_page = request.args.get('next')
+            if not next_page:
+                next_page = url_for('index')
+            return redirect(next_page)
+        
+        return render_template('login.html', title='Log In', form=form)
+
+    def logout(self):
+        logout_user()
+        form = LoginForm()
+        render_template('login.html', title='Log In', form=form)

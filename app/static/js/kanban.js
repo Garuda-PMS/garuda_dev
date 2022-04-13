@@ -30,15 +30,29 @@ function createTask(){
     }
 }
 
-function saveTask(){
+function saveTask(user_id){
 
-    var objectiveName = document.getElementById("objective-name").value;
-    var objectiveStatus = document.getElementById("objective-status");
+    const xmlhttp = new XMLHttpRequest();
+    const saveTaskURL = "/task/create";
+    const objectiveName = document.getElementById("objective-name");
+    const objectiveStatus = document.getElementById("objective-status");
+    const objectiveDescription = document.getElementById('objective-description');
+    let task_params = {
+        'assignee_id': user_id,
+        'title': objectiveName.value, 
+        'status': objectiveStatus.value, 
+        'description': objectiveDescription.value
+    };
+
     document.getElementById(objectiveStatus.value).innerHTML += `
-    <div class="objective" id="${objectiveName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
-        <span>${objectiveName}</span>
+    <div class="objective" id="${objectiveName.value.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+        <span>${objectiveName.value}</span>
     </div>
-    `
+    `;
+
+    xmlhttp.open('POST', saveTaskURL);
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(task_params));
 }
 
 function editTask(){

@@ -51,7 +51,7 @@
                     <input class="form-row-input" type="text" name="objective-name" id="objective-name">
                 </span>
                 <span class="form-row">
-                    <label class="form-row-label" for="objective-name">Text</label>
+                    <label class="form-row-label" for="objective-description">Text</label>
                     <textarea class="form-row-input" name="objective-description" id="objective-description" cols="70" rows="10"></textarea>
                 </span>
                 <span class="form-row">
@@ -75,7 +75,7 @@
                 </span>
                 <span class="form-row-buttons">
                     <button id="edit-button" onclick="editTask()">Edit</span>
-                <button id="save-button" onclick="saveTask()">Save</span>
+                <button id="save-button" onclick="saveTask('{{ current_user.id }}')">Save</span>
                     <button id="cancel-button" onclick="createTask()">Cancel</span>
                         </span>
             </div>

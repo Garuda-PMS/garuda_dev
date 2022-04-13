@@ -5,7 +5,7 @@ from app import db
 class Story(Objective):
     __tablename__ = 'story'
     epic_id = db.Column(db.Integer, ForeignKey('epic.id'))
-    associated_tasks = db.relationship('Task', backref='story', lazy=True)
+    #associated_tasks = db.relationship('Task', backref='story', lazy=True)
     
     @property
     def serialize(self):

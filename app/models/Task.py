@@ -7,4 +7,4 @@ class Task(Objective):
 
     deadline = db.Column(db.Integer)
     assignee_id = db.Column(db.Integer, ForeignKey('user.id'))
-    story_id = db.Column(db.Integer, ForeignKey('story.id'))
+    #story_id = db.Column(db.Integer, ForeignKey('story.id'))
