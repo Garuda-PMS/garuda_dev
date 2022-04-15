@@ -20,3 +20,6 @@ class Objective(db.Model):
             'description': self.description,
             'status': self.status
         }
+    
+    def __repr__(self):
+        return ":".join(self.serialize.values())

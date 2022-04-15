@@ -28,21 +28,63 @@
                 <div class="objective" id="objective1" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
                     <span>Dummy Objective</span>
                 </div>
+                {% for task in task_details %}
+                    {% if task['status'] == 'backlog' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                            <span>{{ task['title'] }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="kanban-block" id="ready" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>Ready</strong>
+                {% for task in task_details %}
+                    {% if task['status'] == 'ready' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                            <span>{{ task['title'] }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="kanban-block" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>In Progress</strong>
+                {% for task in task_details %}
+                    {% if task['status'] == 'inprogress' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                            <span>{{ task['title'] }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="kanban-block" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>Done</strong>
+                {% for task in task_details %}
+                    {% if task['status'] == 'done' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                            <span>{{ task['title'] }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="kanban-block" id="testing" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>In Testing</strong>
+                {% for task in task_details %}
+                    {% if task['status'] == 'testing' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                            <span>{{ task['title'] }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="kanban-block" id="closed" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>Closed</strong>
+                {% for task in task_details %}
+                    {% if task['status'] == 'closed' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                            <span>{{ task['title'] }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="create-new-objective-block" id="create-new-objective-block">
                 <strong>New Objective</strong>

@@ -39,7 +39,9 @@ app.register_blueprint(register_blueprint, url_prefix='/register')
 @app.route('/')
 @login_required
 def index():
-    return render_template('kanban.html')
+    tasks = db.session.query(Task.Task).paginate()
+    task_details = [ {'title': task.title, 'status': task.status} for task in tasks.items]
+    return render_template('kanban.html', task_details=task_details)
 
 @app.after_request
 def add_header(r):
