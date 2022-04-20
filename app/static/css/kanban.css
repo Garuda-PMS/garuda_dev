@@ -60,7 +60,8 @@ body {
   }
   
   .kanban-block,
-  .create-new-objective-block {
+  .create-new-objective-block,
+  .view-objective-block {
     margin-right: 0.5rem;
     padding: 0.2rem;
     width: 20.5%;
@@ -117,7 +118,8 @@ body {
     font-size: 1rem;
   }
   
-  .create-new-objective-block {
+  .create-new-objective-block,
+  .view-objective-block {
     display: none;
     /* display: flex; */
     background: #07d2a9;
@@ -139,6 +141,14 @@ body {
     border-right: 0;
     border-radius: 0.2rem 0rem 0rem 0.2rem;
   }
+
+  .form-row-output {
+    width: 80%;
+    padding-left: 1.2em;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    display: inline-flex;
+  }
   
   .form-row-input {
     border: 0.1rem solid black;
@@ -151,7 +161,7 @@ body {
   }
   
   .form-row-buttons {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0.2rem;
@@ -174,3 +184,8 @@ body {
     display: none;
   }
   
+  #form-row div {
+    border: 0.1rem solid black;
+    border-radius: 0rem 0.2rem 0.2rem 0rem;
+    width: 85%;
+  }

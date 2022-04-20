@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -40,7 +41,7 @@ app.register_blueprint(register_blueprint, url_prefix='/register')
 @login_required
 def index():
     tasks = db.session.query(Task.Task).paginate()
-    task_details = [ {'title': task.title, 'status': task.status} for task in tasks.items]
+    task_details = [ {'title': task.title, 'status': task.status, 'description': task.description, 'deadline': task.deadline, 'assignee_id': task.assignee_id} for task in tasks.items]
     return render_template('kanban.html', task_details=task_details)
 
 @app.after_request

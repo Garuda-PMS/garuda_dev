@@ -25,12 +25,9 @@
         <div class="kanban-board">
             <div class="kanban-block" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <strong>Backlog</strong>
-                <div class="objective" id="objective1" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
-                    <span>Dummy Objective</span>
-                </div>
                 {% for task in task_details %}
                     {% if task['status'] == 'backlog' %}
-                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
                             <span>{{ task['title'] }}</span>
                         </div>
                     {% endif %}
@@ -90,23 +87,26 @@
                 <strong>New Objective</strong>
                 <span class="form-row">
                     <label class="form-row-label" for="objective-name">Objective</label>
-                    <input class="form-row-input" type="text" name="objective-name" id="objective-name">
+                    <input class="form-row-input" type="text" name="objective-name" id="input-objective-name" />
+                    <label class="form-row-output" id="output-objective-name" for="objective-name">Objective</label>
                 </span>
                 <span class="form-row">
                     <label class="form-row-label" for="objective-description">Text</label>
-                    <textarea class="form-row-input" name="objective-description" id="objective-description" cols="70" rows="10"></textarea>
+                    <textarea class="form-row-input" name="objective-description" id="input-objective-description" cols="70" rows="10"></textarea>
+                    <label class="form-row-output" for="objective-description" id="output-objective-description">Text</label>
                 </span>
                 <span class="form-row">
-                    <label class="form-row-label" for="objective-name">Type</label>
-                    <select class="form-row-input" name="objective-type" id="objective-type">
+                    <label class="form-row-label" for="objective-type">Type</label>
+                    <select class="form-row-input" name="input-objective-type" id="input-objective-type">
                         <option value="task">Task</option>
                         <option value="story">Story</option>
                         <option value="epic">Epic</option>
                     </select>
+                    <label class="form-row-output" id="output-objective-type" for="output-objective-type">Type</label>
                 </span>
                 <span class="form-row">
-                    <label class="form-row-label" for="objective-name">Status</label>
-                    <select class="form-row-input" name="objective-status" id="objective-status">
+                    <label class="form-row-label" for="objective-status">Status</label>
+                    <select class="form-row-input" name="input-objective-status" id="input-objective-status">
                         <option value="backlog">Backlog</option>
                         <option value="ready">Ready</option>
                         <option value="inprogress">In Progress</option>
@@ -114,13 +114,23 @@
                         <option value="testing">In Testing</option>
                         <option value="closed">Closed</option>
                     </select>
+                    <label class="form-row-output" name="output-objective-status" id="output-objective-status" for="objective-status">Status</label>
+                </span>
+                <span class="form-row">
+                    <label class="form-row-label" for="objective-deadline">Deadline</label>
+                    <input class="form-row-input" type="text" name="objective-deadline" id="input-objective-deadline" />
+                    <label class="form-row-output" name="output-objective-deadline" id="output-objective-deadline" for="objective-deadline">Deadline</label>
+                </span>
+                <span class="form-row">
+                    <label class="form-row-label" for="objective-assignee" id="label-assignee">Assignee</label>
+                    <label class="form-row-output" name="output-objective-assignee" id="output-objective-assignee" for="objective-deadline">Deadline</label>
                 </span>
                 <span class="form-row-buttons">
                     <button id="edit-button" onclick="editTask()">Edit</span>
                 <button id="save-button" onclick="saveTask('{{ current_user.id }}')">Save</span>
                     <button id="cancel-button" onclick="createTask()">Cancel</span>
                         </span>
-            </div>
+            </div> 
         </div>
     </div>
 </body>
