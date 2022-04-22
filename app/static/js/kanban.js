@@ -39,8 +39,8 @@ function toggleInputOutputLabels(input_display, output_display) {
     output_objective_deadline.style.display = output_display;
     output_objective_assignee_id.style.display = output_display;
     document.getElementById('label-assignee').style.display = output_display;
-
     document.getElementById('save-button').style.display = input_display;
+    //document.getElementById('edit-button').style.display = output_display;
 }
 
 function setOutputContents(title, description, type, status, deadline, assignee_id) {
@@ -85,10 +85,10 @@ function createTask() {
     toggleInputOutputLabels('inherit', 'none');
 }
 
-function viewTask(title, description, type, status) {
+function viewTask(title, description, type, status, deadline, assignee_id) {
     renderTask();
     toggleInputOutputLabels('none', 'inherit');
-    setOutputContents(title, description, type, status);
+    setOutputContents(title, description, type, status, deadline, assignee_id);
 }
 
 function saveTask(user_id){
@@ -98,11 +98,13 @@ function saveTask(user_id){
     const objectiveName = document.getElementById("objective-name");
     const objectiveStatus = document.getElementById("objective-status");
     const objectiveDescription = document.getElementById('objective-description');
+    const objectiveDeadline = document.getElementById('input-objective-deadline');
     let task_params = {
         'assignee_id': user_id,
         'title': objectiveName.value, 
         'status': objectiveStatus.value, 
-        'description': objectiveDescription.value
+        'description': objectiveDescription.value,
+        'deadline': objectiveDeadline.value
     };
 
     document.getElementById(objectiveStatus.value).innerHTML += `

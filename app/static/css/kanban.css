@@ -2,12 +2,25 @@ body {
     background-color: rgba(177, 177, 177, 0.658);
   }
 
-  .navbar {
+  /* .navbar {
     list-style-type: none;
     margin: 3%;
     padding-left: 0.5em;
     overflow: hidden;
     background-color: #333;
+  } */
+
+  #create-objective {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    background-color: rgba(74, 74, 74, 0.073);
+    border-radius: 0.6rem;
+    width: 49.2%;
+    border: 0.25rem solid black;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
   }
 
   .navbar li {
