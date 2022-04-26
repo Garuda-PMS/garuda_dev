@@ -1,6 +1,6 @@
 import sys
 from flask import render_template, redirect, url_for, request, abort
-from app.models.Epic import Epic
+from app.models.Story import Story
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
@@ -12,9 +12,15 @@ class StoryController:
         return cls.instance
 
 
-    def view(self, epic_id):
+    def view(self, story_id):
         pass
     def create(self):
-        pass
+        if request.method != "POST": return
+        json_params = request.get_json(True)
+        new_story = Story(**json_params)
+        db.session.add(new_story)
+        db.session.commit()
+        return json_params
+
     def edit(self, epic_id):
         pass

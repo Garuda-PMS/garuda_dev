@@ -95,17 +95,26 @@ function saveTask(user_id){
 
     const xmlhttp = new XMLHttpRequest();
     const saveTaskURL = "/task/create";
-    const objectiveName = document.getElementById("objective-name");
-    const objectiveStatus = document.getElementById("objective-status");
-    const objectiveDescription = document.getElementById('objective-description');
+    const objectiveName = document.getElementById("input-objective-name");
+    const objectiveType = document.getElementById('input-objective-type');
+    const objectiveStatus = document.getElementById("input-objective-status");
+    const objectiveDescription = document.getElementById('input-objective-description');
     const objectiveDeadline = document.getElementById('input-objective-deadline');
+
+    type = objectiveType.value;
+
     let task_params = {
-        'assignee_id': user_id,
         'title': objectiveName.value, 
         'status': objectiveStatus.value, 
         'description': objectiveDescription.value,
         'deadline': objectiveDeadline.value
     };
+
+    switch(type) {
+        case 'Task': task_params['assignee_id'] = user_id; break;
+        case 'Story': saveTaskURL = "/story/create"; break;
+        case 'Epic': saveTaskURL = "/epic/create"; break;
+    }
 
     document.getElementById(objectiveStatus.value).innerHTML += `
     <div class="objective" id="${objectiveName.value.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)">

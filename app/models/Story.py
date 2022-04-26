@@ -13,6 +13,6 @@ class Story(Objective):
             'id': self.id,
             'title': self.title,
             'description': self.description,
-            'status': self.status,
-            'epic_id': self.epic_id
+            'status': self.status
+            #'epic_id': self.epic_id
         }
