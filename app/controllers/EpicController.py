@@ -15,7 +15,12 @@ class EpicController:
         pass
     
     def create(self):
-        pass
+        if request.method != "POST": return
+        json_params = request.get_json(True)
+        new_epic = Epic(**json_params)
+        db.session.add(new_epic)
+        db.session.commit()
+        return json_params
 
     def edit(self, epic_id):
         pass

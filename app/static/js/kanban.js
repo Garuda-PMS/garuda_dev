@@ -93,8 +93,8 @@ function viewTask(title, description, type, status, deadline, assignee_id) {
 
 function saveTask(user_id){
 
+    var saveTaskURL = "/task/create";
     const xmlhttp = new XMLHttpRequest();
-    const saveTaskURL = "/task/create";
     const objectiveName = document.getElementById("input-objective-name");
     const objectiveType = document.getElementById('input-objective-type');
     const objectiveStatus = document.getElementById("input-objective-status");
@@ -106,14 +106,15 @@ function saveTask(user_id){
     let task_params = {
         'title': objectiveName.value, 
         'status': objectiveStatus.value, 
-        'description': objectiveDescription.value,
-        'deadline': objectiveDeadline.value
+        'description': objectiveDescription.value
     };
 
     switch(type) {
-        case 'Task': task_params['assignee_id'] = user_id; break;
-        case 'Story': saveTaskURL = "/story/create"; break;
-        case 'Epic': saveTaskURL = "/epic/create"; break;
+        case 'task': task_params['assignee_id'] = user_id; 
+                     task_params['deadline'] = deadline;
+                     break;
+        case 'story': saveTaskURL = "/story/create"; break;
+        case 'epic': saveTaskURL = "/epic/create"; break;
     }
 
     document.getElementById(objectiveStatus.value).innerHTML += `
