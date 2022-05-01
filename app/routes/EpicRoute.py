@@ -1,6 +1,8 @@
 from flask import Blueprint
 from app.controllers.EpicController import EpicController
 
+# Mappings between API endpoint and controller functionality using dedicated 'Blueprints'
+
 epicController = EpicController()
 epic_blueprint = Blueprint('epic_blueprint', __name__)
 

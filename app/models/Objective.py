@@ -1,6 +1,7 @@
 import copy
 from app import db
 
+# Objective: High-level initiative that must be achieved for goal completion
 class Objective(db.Model):
     __abstract__ = True  
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

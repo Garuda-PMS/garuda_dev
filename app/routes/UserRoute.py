@@ -1,6 +1,8 @@
 from flask import Blueprint
 from app.controllers.UserController import UserController
 
+# Mappings between API endpoint and controller functionality using dedicated 'Blueprints'
+
 userController = UserController()
 user_blueprint = Blueprint('user_blueprint', __name__)
 

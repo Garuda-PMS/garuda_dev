@@ -2,6 +2,8 @@ import sys
 from flask import render_template, redirect, url_for, request, abort
 from app.models.Story import Story
 from flask_sqlalchemy import SQLAlchemy
+
+#Invocation of ORM object
 db = SQLAlchemy()
 
 # Controller: Singleton Pattern with __new__ method for fetching single instance

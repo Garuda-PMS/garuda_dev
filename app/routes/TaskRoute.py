@@ -1,6 +1,8 @@
 from flask import Blueprint
 from app.controllers.TaskController import TaskController
 
+# Mappings between API endpoint and controller functionality using dedicated 'Blueprints'
+
 taskController = TaskController()
 task_blueprint = Blueprint('task_blueprint', __name__)
 

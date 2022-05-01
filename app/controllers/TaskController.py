@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 from app.models.Task import Task
 import random;
+
+#Invocation of ORM object
 db = SQLAlchemy()
 
 # Controller: Singleton Pattern with __new__ method for fetching single instance

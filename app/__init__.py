@@ -9,6 +9,7 @@ from flask_login import LoginManager, login_required
 app = Flask(__name__)
 # Load the config (Database config)
 app.config.from_object(Config)
+#Invocation of ORM object
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
@@ -30,7 +31,7 @@ from app.routes.LogoutRoute import logout_blueprint
 from app.routes.RegisterRoute import register_blueprint
 from app.routes.ObjectiveRoute import objective_blueprint
 
-# Register the routes
+# Register the blueprint which binds routes to controller functionality
 app.register_blueprint(user_blueprint, url_prefix='/user')
 app.register_blueprint(login_blueprint, url_prefix='/login')
 app.register_blueprint(logout_blueprint, url_prefix='/logout')

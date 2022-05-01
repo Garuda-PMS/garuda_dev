@@ -2,10 +2,11 @@ from app.models.Objective import Objective
 from sqlalchemy import ForeignKey
 from app import db
 
+#story: Short requirements written from the perspective of an end user
 class Story(Objective):
     __tablename__ = 'story'
-    #epic_id = db.Column(db.Integer, ForeignKey('epic.id'))
-    #associated_tasks = db.relationship('Task', backref='story', lazy=True)
+    epic_id = db.Column(db.Integer, ForeignKey('epic.id'))
+    associated_tasks = db.relationship('Task', backref='story', lazy=True)
     
     @property
     def serialize(self):

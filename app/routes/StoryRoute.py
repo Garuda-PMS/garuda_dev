@@ -1,6 +1,8 @@
 from flask import Blueprint
 from app.controllers.StoryController import StoryController
 
+# Mappings between API endpoint and controller functionality using dedicated 'Blueprints'
+
 storyController = StoryController()
 story_blueprint = Blueprint('story_blueprint', __name__)
 

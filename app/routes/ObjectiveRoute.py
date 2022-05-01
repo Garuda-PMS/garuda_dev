@@ -1,6 +1,8 @@
 from flask import Blueprint
 from app.controllers.ObjectiveController import ObjectiveController
 
+# Mappings between API endpoint and controller functionality using dedicated 'Blueprints'
+
 objectiveController = ObjectiveController()
 objective_blueprint = Blueprint('objective_blueprint', __name__)
     
