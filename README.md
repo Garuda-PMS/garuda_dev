@@ -31,3 +31,6 @@
 * Perform a `flask db upgrade` to import the necessary schematic into the mysql server
 
 * Finally, run the application using `flask run`
+
+## Video Demonstration
+[Garuda Final Video Demonstration](https://drive.google.com/file/d/1VWczq5R1OOdgIbIr56zkqHiNZ-S-XHHP/view?usp=sharing)
