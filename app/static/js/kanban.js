@@ -88,6 +88,7 @@ function createTask() {
 function viewTask(title, description, type, status, deadline, assignee_id) {
     renderTask();
     toggleInputOutputLabels('none', 'inherit');
+    console.log(title, description, type, status, deadline, assignee_id);
     setOutputContents(title, description, type, status, deadline, assignee_id);
 }
 
@@ -102,7 +103,9 @@ function saveTask(user_id){
     const objectiveDeadline = document.getElementById('input-objective-deadline');
 
     type = objectiveType.value;
-
+    deadline = objectiveDeadline.value;
+    if(!deadline || !Number.isInteger(deadline)) deadline = 0;
+    
     let task_params = {
         'title': objectiveName.value, 
         'status': objectiveStatus.value, 

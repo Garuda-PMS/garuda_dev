@@ -41,8 +41,12 @@ app.register_blueprint(register_blueprint, url_prefix='/register')
 @login_required
 def index():
     tasks = db.session.query(Task.Task).paginate()
+    epics = db.session.query(Epic.Epic).paginate()
+    stories = db.session.query(Story.Story).paginate()
+    epic_details = [ {'title': epic.title, 'status': epic.status, 'description': epic.description} for epic in epics.items]
+    story_details = [ {'title': story.title, 'status': story.status, 'description': story.description} for story in stories.items]
     task_details = [ {'title': task.title, 'status': task.status, 'description': task.description, 'deadline': task.deadline, 'assignee_id': task.assignee_id} for task in tasks.items]
-    return render_template('kanban.html', task_details=task_details)
+    return render_template('kanban.html', task_details=task_details, epic_details=epic_details, story_details=story_details)
 
 @app.after_request
 def add_header(r):

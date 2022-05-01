@@ -28,7 +28,21 @@
                 {% for task in task_details %}
                     {% if task['status'] == 'backlog' %}
                         <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
-                            <span>{{ task['title'] }}</span>
+                            <span>{{ task['title'] }} | <strong>Task</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for epic in epic_details %}
+                    {% if epic['status'] == 'backlog' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ epic.title }}', '{{ epic.description }}', '{{ epic.type }}', '{{ epic.status }}', '-1', '-1')">
+                            <span>{{ epic['title'] }} | <strong>Epic</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for story in story_details %}
+                    {% if story['status'] == 'backlog' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ story.title }}', '{{ story.description }}', '{{ story.type }}', '{{ story.status }}', '-1', '-1')">
+                            <span>{{ story['title'] }} | <strong>Story</strong> </span>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -38,7 +52,21 @@
                 {% for task in task_details %}
                     {% if task['status'] == 'ready' %}
                         <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
-                            <span>{{ task['title'] }}</span>
+                            <span>{{ task['title'] }} | <strong>Task</strong></span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for epic in epic_details %}
+                    {% if epic['status'] == 'ready' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ epic.title }}', '{{ epic.description }}', '{{ epic.type }}', '{{ epic.status }}', '-1', '-1')">
+                            <span>{{ epic['title'] }} | <strong>Epic</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for story in story_details %}
+                    {% if story['status'] == 'ready' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ story.title }}', '{{ story.description }}', '{{ story.type }}', '{{ story.status }}', '-1', '-1')">
+                            <span>{{ story['title'] }} | <strong>Story</strong> </span>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -48,7 +76,21 @@
                 {% for task in task_details %}
                     {% if task['status'] == 'inprogress' %}
                         <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
-                            <span>{{ task['title'] }}</span>
+                            <span>{{ task['title'] }} | <strong>Task</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for epic in epic_details %}
+                    {% if epic['status'] == 'inprogress' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ epic.title }}', '{{ epic.description }}', '{{ epic.type }}', '{{ epic.status }}', '-1', '-1')">
+                            <span>{{ epic['title'] }} | <strong>Epic</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for story in story_details %}
+                    {% if story['status'] == 'inprogress' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ story.title }}', '{{ story.description }}', '{{ story.type }}', '{{ story.status }}', '-1', '-1')">
+                            <span>{{ story['title'] }} | <strong>Story</strong> </span>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -58,7 +100,21 @@
                 {% for task in task_details %}
                     {% if task['status'] == 'done' %}
                         <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
-                            <span>{{ task['title'] }}</span>
+                            <span>{{ task['title'] }} | <strong>Task</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for epic in epic_details %}
+                    {% if epic['status'] == 'done' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ epic.title }}', '{{ epic.description }}', '{{ epic.type }}', '{{ epic.status }}', '-1', '-1')">
+                            <span>{{ epic['title'] }} | <strong>Epic</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for story in story_details %}
+                    {% if story['status'] == 'done' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ story.title }}', '{{ story.description }}', '{{ story.type }}', '{{ story.status }}', '-1', '-1')">
+                            <span>{{ story['title'] }} | <strong>Story</strong> </span>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -68,7 +124,21 @@
                 {% for task in task_details %}
                     {% if task['status'] == 'testing' %}
                         <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
-                            <span>{{ task['title'] }}</span>
+                            <span>{{ task['title'] }} | <strong>Task</strong></span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for epic in epic_details %}
+                    {% if epic['status'] == 'testing' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ epic.title }}', '{{ epic.description }}', '{{ epic.type }}', '{{ epic.status }}', '-1', '-1')">
+                            <span>{{ epic['title'] }} | <strong>Epic</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for story in story_details %}
+                    {% if story['status'] == 'testing' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ story.title }}', '{{ story.description }}', '{{ story.type }}', '{{ story.status }}', '-1', '-1')">
+                            <span>{{ story['title'] }} | <strong>Story</strong> </span>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -78,7 +148,21 @@
                 {% for task in task_details %}
                     {% if task['status'] == 'closed' %}
                         <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ task.title }}', '{{ task.description }}', '{{ task.type }}', '{{ task.status }}', '{{ task.deadline }}', '{{ task.assignee_id }}')">
-                            <span>{{ task['title'] }}</span>
+                            <span>{{ task['title'] }} | <strong>Task</strong></span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for epic in epic_details %}
+                    {% if epic['status'] == 'closed' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ epic.title }}', '{{ epic.description }}', '{{ epic.type }}', '{{ epic.status }}', '-1', '-1')">
+                            <span>{{ epic['title'] }} | <strong>Epic</strong> </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for story in story_details %}
+                    {% if story['status'] == 'closed' %}
+                        <div class="objective" draggable="true" ondragstart="drag(event)" ondrop="dropObjective(event)" onclick="viewTask('{{ story.title }}', '{{ story.description }}', '{{ story.type }}', '{{ story.status }}', '-1', '-1')">
+                            <span>{{ story['title'] }} | <strong>Story</strong> </span>
                         </div>
                     {% endif %}
                 {% endfor %}
