@@ -13,13 +13,19 @@ class RegisterController:
         return cls.instance
 
     def register(self):
+        # if the user is already logged in then we redirect them to the home page
         if current_user.is_authenticated:
             return redirect(url_for('index'))
+        # Registration form
         form = RegistrationForm()
+        # If the form data is valid
         if form.validate_on_submit():
+            # fetch the new user details
             user = User(first_name=form.firstname.data, last_name=form.lastname.data)
+            # Create user
             db.session.add(user)
             db.session.commit()
+            # Add login credentials to DB
             login_credential = LoginCredential(user_id=user.id, user_name=form.username.data)
             login_credential.set_password(form.password.data)
             db.session.add(login_credential)

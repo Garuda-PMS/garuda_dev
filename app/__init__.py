@@ -5,7 +5,9 @@ from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from flask_login import LoginManager, login_required
 
+# Define flask app
 app = Flask(__name__)
+# Load the config (Database config)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -28,6 +30,7 @@ from app.routes.LogoutRoute import logout_blueprint
 from app.routes.RegisterRoute import register_blueprint
 from app.routes.ObjectiveRoute import objective_blueprint
 
+# Register the routes
 app.register_blueprint(user_blueprint, url_prefix='/user')
 app.register_blueprint(login_blueprint, url_prefix='/login')
 app.register_blueprint(logout_blueprint, url_prefix='/logout')
@@ -37,9 +40,12 @@ app.register_blueprint(story_blueprint, url_prefix='/story')
 app.register_blueprint(task_blueprint, url_prefix='/task')
 app.register_blueprint(register_blueprint, url_prefix='/register')
 
+# Route to access the home page
 @app.route('/')
+# Login is required to access the home page
 @login_required
 def index():
+    # Render the tasks, epics and stories
     tasks = db.session.query(Task.Task).paginate()
     epics = db.session.query(Epic.Epic).paginate()
     stories = db.session.query(Story.Story).paginate()

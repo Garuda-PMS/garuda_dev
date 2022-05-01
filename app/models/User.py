@@ -2,6 +2,9 @@ from app import db
 from app import login
 from flask_login import UserMixin
 
+'''
+Model associated with a User
+'''
 class User(UserMixin, db.Model):
     __tablename__ = 'user'    
     id = db.Column(db.Integer, primary_key=True)

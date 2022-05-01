@@ -2,6 +2,9 @@ from sqlalchemy import ForeignKey
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
+'''
+Model associated with user credentials 
+'''
 class LoginCredential(db.Model):
     __tablename__ = 'login_credential'    
     user_id = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)
@@ -16,8 +19,10 @@ class LoginCredential(db.Model):
             'password': self.password
         }
 
+    # Store password as a hash
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
+    # Validate the password hash
     def check_password(self, password):
         return check_password_hash(self.password, password)
